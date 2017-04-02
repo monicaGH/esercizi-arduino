@@ -1,0 +1,38 @@
+//semaforo con rosso, giallo, verde, 10sec r/v , 5 sec g+V
+//da lezione con maffucci a canonica
+int luceRossa = 5;
+int luceGialla = 4;
+int luceVerde = 3;
+int tempoRosso = 5000;
+int tempoLampeggiamento = 500;
+int tempoVerde = 5000;
+int numeroLampeggiamenti = 4;
+
+void setup() {
+  pinMode(luceRossa, OUTPUT);
+  pinMode(luceGialla, OUTPUT);
+  pinMode(luceVerde, OUTPUT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  digitalWrite(luceRossa, HIGH);
+  digitalWrite(luceGialla, LOW);
+  digitalWrite(luceVerde, LOW);
+  delay(tempoRosso);
+
+  accendiSpegni();
+
+  digitalWrite(luceRossa, LOW);
+  digitalWrite(luceVerde, HIGH);
+  delay(tempoVerde);
+}
+
+void accendiSpegni() {
+  for  (int i = 0; i < numeroLampeggiamenti; i++) {
+    delay(tempoLampeggiamento);
+    digitalWrite(luceRossa, HIGH);
+    delay(tempoLampeggiamento);
+digitalWrite(luceRossa, LOW);
+  }
+}
